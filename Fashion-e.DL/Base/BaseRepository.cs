@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Fashion_e.Common.Entities;
+using Fashion_e.Common.Entities.Base;
 using Fashion_e.DL.Context;
 using Microsoft.EntityFrameworkCore;
 

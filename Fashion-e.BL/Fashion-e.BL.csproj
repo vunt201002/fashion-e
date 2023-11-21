@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Fashion-e.Common\Fashion-e.Common.csproj" />
     <ProjectReference Include="..\Fashion-e.DL\Fashion-e.DL.csproj" />
   </ItemGroup>

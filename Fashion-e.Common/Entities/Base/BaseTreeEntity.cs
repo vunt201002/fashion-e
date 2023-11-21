@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fashion_e.Common.Entities
+namespace Fashion_e.Common.Entities.Base
 {
     /// <summary>
     /// lớp trả về dữ liệu
