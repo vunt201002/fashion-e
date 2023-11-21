@@ -65,5 +65,12 @@ namespace Fashion_e.BL.Base
 
             return res;
         }
+
+        public virtual async Task<IEnumerable<T>> GetTree()
+        {
+            var entites = await _baseRepository.GetTree();
+
+            return entites;
+        }
     }
 }

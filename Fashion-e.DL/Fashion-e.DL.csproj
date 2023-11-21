@@ -23,4 +23,8 @@
 	  </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Fashion-e.Common\Fashion-e.Common.csproj" />
+  </ItemGroup>
+
 </Project>

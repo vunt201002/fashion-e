@@ -13,5 +13,6 @@ namespace Fashion_e.BL.Base
         public Task<int> Add(T item);
         public Task<int> Update(Guid id, T item);
         public Task<int> Delete(Guid id);
+        public Task<IEnumerable<T>> GetTree();
     }
 }

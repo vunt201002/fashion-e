@@ -15,4 +15,13 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Middlewares\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fashion-e.BL\Fashion-e.BL.csproj" />
+    <ProjectReference Include="..\Fashion-e.Common\Fashion-e.Common.csproj" />
+  </ItemGroup>
+
 </Project>

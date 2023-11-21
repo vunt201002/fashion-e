@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Fashion_e.Base
 {
+    [ApiController]
+    [Route("api/v1/[controller]")]
     public class BaseController<T> : ControllerBase where T : class
     {
         protected readonly IBaseService<T> _baseService;
@@ -18,6 +20,14 @@ namespace Fashion_e.Base
             IEnumerable<T> entities = await _baseService.GetList();
 
             return Ok(entities.ToList());
+        }
+
+        [HttpGet("tree")]
+        public virtual async Task<IActionResult> GetTree()
+        {
+            var entities = await _baseService.GetTree();
+
+            return Ok(entities);
         }
 
         [HttpGet("{id}")]
