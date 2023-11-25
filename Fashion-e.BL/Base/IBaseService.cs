@@ -49,13 +49,5 @@ namespace Fashion_e.BL.Base
         /// <returns>số dòng bị ảnh hưởng</returns>
         /// created by: ntvu (20/11/2023)
         public Task<int> Delete(Guid id);
-
-        /// <summary>
-        /// hàm trả về danh sách
-        /// dạng cây
-        /// </summary>
-        /// <returns>danh sách bản ghi</returns>
-        /// created by: ntvu (20/11/2023)
-        public Task<IEnumerable<T>> GetTree();
     }
 }

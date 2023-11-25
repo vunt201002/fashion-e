@@ -34,19 +34,6 @@ namespace Fashion_e.Base
         }
 
         /// <summary>
-        /// lấy về danh sách dạng cây
-        /// </summary>
-        /// <returns>Task<IActionResult></returns>
-        /// created by: ntvu (20/11/2023)
-        [HttpGet("tree")]
-        public virtual async Task<IActionResult> GetTree()
-        {
-            var entities = await _baseService.GetTree();
-
-            return Ok(entities);
-        }
-
-        /// <summary>
         /// lấy về record theo id
         /// </summary>
         /// <param name="id">id bản ghi</param>

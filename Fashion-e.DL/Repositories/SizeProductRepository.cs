@@ -10,8 +10,11 @@ using Fashion_e.DL.Context;
 
 namespace Fashion_e.DL.Repositories
 {
-    public class CategoryRepository : BaseTreeRepository<Category>, ICategoryRepository
+    public class SizeProductRepository : BaseRepository<SizeProduct>, ISizeProductRepository
     {
-        public CategoryRepository(DataContext context) : base(context) { }
+        public SizeProductRepository(DataContext context) : base(context)
+        {
+            
+        }
     }
 }

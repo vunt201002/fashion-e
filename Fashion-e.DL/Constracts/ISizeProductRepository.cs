@@ -8,7 +8,7 @@ using Fashion_e.DL.Base;
 
 namespace Fashion_e.DL.Constracts
 {
-    public interface ICategoryRepository : IBaseTreeRepository<Category>
+    public interface ISizeProductRepository : IBaseRepository<SizeProduct>
     {
     }
 }

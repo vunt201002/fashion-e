@@ -108,17 +108,5 @@ namespace Fashion_e.BL.Base
             return res;
         }
 
-        /// <summary>
-        /// hàm trả về danh sách
-        /// dạng cây
-        /// </summary>
-        /// <returns>danh sách bản ghi</returns>
-        /// created by: ntvu (20/11/2023)
-        public virtual async Task<IEnumerable<T>> GetTree()
-        {
-            var entites = await _baseRepository.GetTree();
-
-            return entites;
-        }
     }
 }
