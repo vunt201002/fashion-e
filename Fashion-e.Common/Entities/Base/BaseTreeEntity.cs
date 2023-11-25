@@ -13,9 +13,9 @@ namespace Fashion_e.Common.Entities.Base
     /// <typeparam name="T"></typeparam>
     public class BaseTreeEntity<T> : BaseEntity where T : class
     {
-        public Guid ParentId { get; set; }                              // id node cha
+        public Guid ParentId { get; set; } = Guid.Empty;                // id node cha
 
-        public T Parent { get; set; }                                   // node cha
+        public T? Parent { get; set; } = null;                          // node cha
         public IEnumerable<T> Children { get; set; } = new List<T>();   // list node con
     }
 }

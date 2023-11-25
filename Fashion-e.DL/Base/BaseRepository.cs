@@ -75,7 +75,7 @@ namespace Fashion_e.DL.Base
         public virtual async Task<IEnumerable<T>> GetList()
         {
             var entities = await _context.Set<T>()
-                .Where(e => EF.Property<int>(e, "Deleted") == 0)
+                .Where(e => EF.Property<int>(e, "IsDelete") == 0)
                 .ToListAsync();
 
             return entities;
@@ -109,7 +109,7 @@ namespace Fashion_e.DL.Base
                 .ToListAsync();
 
             var topLevelEntities = entities
-                .Where(e => e.ParentId == null)
+                .Where(e => e.ParentId == default)
                 .ToList();
 
             foreach(var entity in topLevelEntities)
@@ -139,6 +139,29 @@ namespace Fashion_e.DL.Base
             }
 
             return childrenEntities;
+        }
+
+        public virtual async Task<int> AddTree(T entity)
+        {
+            _context.Set<T>().Add(entity);
+            int res = await _context.SaveChangesAsync();
+
+            if (entity.ParentId != default)
+            {
+                T? parent = await _context.Set<T>().FindAsync(entity.ParentId);
+
+                if (parent != null)
+                {
+                    ((List<T>)parent.Children).Add(entity);
+                    entity.Parent = parent;
+
+                    int isSave = await _context.SaveChangesAsync();
+
+                    res += isSave;
+                }
+            }
+
+            return res;
         }
     }
 }

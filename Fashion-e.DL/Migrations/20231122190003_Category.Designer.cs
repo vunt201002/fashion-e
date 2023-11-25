@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fashion_e.DL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231121092900_Category")]
+    [Migration("20231122190003_Category")]
     partial class Category
     {
         /// <inheritdoc />

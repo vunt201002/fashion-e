@@ -55,5 +55,7 @@ namespace Fashion_e.DL.Base
         /// <returns>Task<int></returns>
         /// created by: ntvu (21/11/2023)
         public Task<IEnumerable<T>> GetTree();
+
+        public Task<int> AddTree(T entity);
     }
 }
