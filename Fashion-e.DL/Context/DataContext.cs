@@ -22,10 +22,20 @@ namespace Fashion_e.DL.Context
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new CategoryConfig());
+            modelBuilder.ApplyConfiguration(new SizeProductConfig());
+            modelBuilder.ApplyConfiguration(new ColorProductConfig());
+            modelBuilder.ApplyConfiguration(new GalleryConfig());
+            modelBuilder.ApplyConfiguration(new ProductConfig());
+            modelBuilder.ApplyConfiguration(new SizeColorProductConfig());
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
 
         public DbSet<Category> Category { get; set; }
+        public DbSet<SizeProduct> SizeProduct { get; set; }
+        public DbSet<ColorProduct> ColorProduct { get; set; }
+        public DbSet<Gallery> Gellery { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<SizeColorProduct> SizeColorProduct { get; set; }
     }
 }
