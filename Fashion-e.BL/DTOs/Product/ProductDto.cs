@@ -12,10 +12,7 @@ namespace Fashion_e.BL.DTOs.Product
         public Guid Id { get; set; }                                // id
 
         [StringLength(20)]
-        public string? Code { get; set; }                            // mã
-        public int IsDelete { get; set; } = 0;                      // đã xóa?
-        public DateTime CreatedAt { get; set; } = DateTime.Now;     // ngày tạo
-        public String CreatedBy { get; set; } = "ntvu";             // người tạo
+        public string? Code { get; set; }                           // mã
         public Guid CategoryId { get; set; }                        // id danh muc
         public string? Title { get; set; }                          // tên sản phẩm
         public int UnitPrice { get; set; }                          // giá

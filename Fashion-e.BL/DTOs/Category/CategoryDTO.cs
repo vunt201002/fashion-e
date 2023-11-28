@@ -17,9 +17,6 @@ namespace Fashion_e.BL.DTOs.Category
 
         [StringLength(20)]
         public string? Code { get; set; }                           // mã
-        public int IsDelete { get; set; } = 0;                      // đã xóa?
-        public DateTime CreatedAt { get; set; } = DateTime.Now;     // ngày tạo
-        public String CreatedBy { get; set; } = "ntvu";             // người tạo
         public string Name { get; set; }                            // tên danh mục
         public Guid ParentId { get; set; }                          // id node cha
     }
