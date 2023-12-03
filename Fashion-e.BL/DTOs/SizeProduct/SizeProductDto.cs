@@ -8,7 +8,8 @@ namespace Fashion_e.BL.DTOs.SizeProduct
 {
     public class SizeProductDto
     {
-        public Guid Id { get; set; }                                // id
-        public string Name { get; set; }                            // tên size
+        public Guid Id { get; set; }            // id
+        public string Name { get; set; }        // tên size
+        public int Level { get; set; }       // 90, 100, 110,...
     }
 }
