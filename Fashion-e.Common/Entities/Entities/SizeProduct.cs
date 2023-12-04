@@ -14,5 +14,6 @@ namespace Fashion_e.Common.Entities.Entities
     public class SizeProduct : BaseEntity
     {
         public string Name { get; set; }        // tên size: S, M, L,...
+        public int Level { get; set; }       // 90, 100, 110,...
     }
 }
