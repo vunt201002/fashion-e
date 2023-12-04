@@ -56,7 +56,9 @@ namespace Fashion_e.DL.Repositories
                             .Select(sc => new
                             {
                                 Size = _context.SizeProduct
-                                    .FirstOrDefault(s => s.Id == sc.SizeProductId),
+                                    .Where(s => s.Id == sc.SizeProductId)
+                                    .OrderBy(s => s.Level)
+                                    .FirstOrDefault(),
                                 Color = _context.ColorProduct
                                     .FirstOrDefault(c => c.Id == sc.ColorProductId),
                                 sc.Quantity,

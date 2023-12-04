@@ -11,5 +11,6 @@ namespace Fashion_e.Common.Entities.Entities
     {
         public string Name { get; set; }            // tên màu
         public string ColorCode { get; set; }       // mã màu: #000, #ccc
+        public string LinkImageColor { get; set; }  // link ảnh của màu
     }
 }
