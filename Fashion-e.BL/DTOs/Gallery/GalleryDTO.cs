@@ -14,6 +14,5 @@ namespace Fashion_e.BL.DTOs.Gallery
         public string Link { get; set; }            // link ảnh
         public string? PublicId { get; set; }       // publicId trên cloundinary
         public int IsThumbnail { get; set; } = 0;   // nền?
-        public Guid ColorId { get; set; }           // màu
     }
 }

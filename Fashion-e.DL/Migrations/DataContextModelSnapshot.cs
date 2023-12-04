@@ -102,9 +102,6 @@ namespace Fashion_e.DL.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<Guid>("ColorId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
@@ -246,9 +243,6 @@ namespace Fashion_e.DL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("IsDelete")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Level")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")

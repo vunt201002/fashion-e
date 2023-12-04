@@ -22,13 +22,13 @@ namespace Fashion_e.DL.Repositories
 
         public async Task<IEnumerable<Object>> GetListWithThumbnail()
         {
-            var products = _context.Product
+            var products = await _context.Product
                 .Where(e => EF.Property<int>(e, "IsDelete") == 0)
-                .GroupJoin(
-                    _context.Gellery,
+                .Join(
+                    _context.Gellery.Where(g => g.IsThumbnail == 1),
                     product => product.Id,
                     gallery => gallery.ProductId,
-                    (product, galleries) => new
+                    (product, gallery) => new
                     {
                         Product = new Product
                         {
@@ -40,32 +40,10 @@ namespace Fashion_e.DL.Repositories
                             Material = product.Material,
                             Instruction = product.Instruction
                         },
-                        Images = galleries.Select(g => g.Link).ToList(),
+                        Link = gallery != null ? gallery.Link : null
                     }
                 )
-                .AsEnumerable()
-                .GroupJoin(
-                    _context.SizeColorProduct,
-                    result => result.Product.Id,
-                    sizeColor => sizeColor.ProductId,
-                    (result, sizeColors) => new
-                    {
-                        result.Product,
-                        result.Images,
-                        SizesColors = sizeColors
-                            .Select(sc => new
-                            {
-                                Size = _context.SizeProduct
-                                    .FirstOrDefault(s => s.Id == sc.SizeProductId),
-                                Color = _context.ColorProduct
-                                    .FirstOrDefault(c => c.Id == sc.ColorProductId),
-                                sc.Quantity,
-                                sc.UnitInOrder
-                            })
-                            .ToList()
-                    }
-                )
-                .ToList();
+                .ToListAsync();
 
             return products;
         }
