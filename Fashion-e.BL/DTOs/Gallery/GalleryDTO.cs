@@ -9,7 +9,6 @@ namespace Fashion_e.BL.DTOs.Gallery
 {
     public class GalleryDTO
     {
-        public Guid Id { get; set; }                // id
         public Guid ProductId { get; set; }         // id sản phẩm
         public string Link { get; set; }            // link ảnh
         public string? PublicId { get; set; }       // publicId trên cloundinary

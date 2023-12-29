@@ -8,7 +8,6 @@ namespace Fashion_e.BL.DTOs.Feedback
 {
     public class FeedbackDTO
     {
-        public Guid Id { get; set; }                            // id
         public Guid CustomerId { get; set; }                    // id khách hàng
         public Guid SizeColorProductId { get; set; }            // id sản phẩm
         public string? Subject { get; set; } = String.Empty;    // tiêu đề

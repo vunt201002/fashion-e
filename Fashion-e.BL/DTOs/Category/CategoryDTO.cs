@@ -13,7 +13,6 @@ namespace Fashion_e.BL.DTOs.Category
     /// created by: ntvu (20/11/2023)
     public class CategoryDTO
     {
-        public Guid Id { get; set; }                                // id
 
         [StringLength(20)]
         public string? Code { get; set; }                           // mã

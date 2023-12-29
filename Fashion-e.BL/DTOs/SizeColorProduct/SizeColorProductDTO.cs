@@ -9,7 +9,6 @@ namespace Fashion_e.BL.DTOs.SizeColorProduct
 {
     public class SizeColorProductDTO
     {
-        public Guid Id { get; set; }                    // id
         public Guid ProductId { get; set; }             // id sản phẩm
         public Guid SizeProductId { get; set; }         // id size
         public Guid ColorProductId { get; set; }        // id màu

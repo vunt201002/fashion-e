@@ -1,17 +1,25 @@
+using System.Text;
 using System.Text.Json.Serialization;
 using Fashion_e.BL.Services.CategoryService;
 using Fashion_e.BL.Services.ColorProductService;
+using Fashion_e.BL.Services.CustomerService;
+using Fashion_e.BL.Services.EmployeeService;
 using Fashion_e.BL.Services.FeedbackService;
 using Fashion_e.BL.Services.GalleryService;
 using Fashion_e.BL.Services.PhotoService;
 using Fashion_e.BL.Services.ProductService;
+using Fashion_e.BL.Services.ShipperService;
 using Fashion_e.BL.Services.SizeColorProductService;
 using Fashion_e.BL.Services.SizeProductService;
 using Fashion_e.Common.Models;
 using Fashion_e.DL.Constracts;
 using Fashion_e.DL.Context;
 using Fashion_e.DL.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +45,38 @@ builder.Services.AddCors(options =>
                 .AllowAnyHeader()
                 .AllowAnyMethod();
         });
+});
+
+// add authentication
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("my top secret key"))
+    };
+});
+
+
+// config swagger to provide jwt
+builder.Services.AddSwaggerGen(option =>
+{
+    option.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey
+    });
+
+    option.OperationFilter<SecurityRequirementsOperationFilter>();
 });
 
 // Add services to the container.
@@ -71,10 +111,21 @@ builder.Services.AddScoped<IFeedbackService, FeedbackService>();
 // photo service
 builder.Services.AddScoped<IPhotoService, PhotoService>();
 
+// customer
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+
+// employee
+builder.Services.AddScoped<IEmployeeService,  EmployeeService>();
+builder.Services.AddScoped<IEmployeeRepository,  EmployeeRepository>();
+
+// shipper
+builder.Services.AddScoped<IShipperService,  ShipperService>();
+builder.Services.AddScoped<IShipperRepository,  ShipperRepository>();
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<DataContext>(
     options => options.UseSqlServer("name=Connection")

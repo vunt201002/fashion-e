@@ -27,6 +27,9 @@ namespace Fashion_e.DL.Context
             modelBuilder.ApplyConfiguration(new GalleryConfig());
             modelBuilder.ApplyConfiguration(new ProductConfig());
             modelBuilder.ApplyConfiguration(new SizeColorProductConfig());
+            modelBuilder.ApplyConfiguration(new CustomerConfig());
+            modelBuilder.ApplyConfiguration(new ShipperConfig());
+            modelBuilder.ApplyConfiguration(new EmployeeConfig());
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
@@ -37,5 +40,8 @@ namespace Fashion_e.DL.Context
         public DbSet<Gallery> Gellery { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<SizeColorProduct> SizeColorProduct { get; set; }
+        public DbSet<Customer> Customer { get; set; }
+        public DbSet<Shipper> Shipper { get; set; }
+        public DbSet<Employee> Employee { get; set; }
     }
 }

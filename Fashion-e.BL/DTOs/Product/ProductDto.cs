@@ -9,7 +9,6 @@ namespace Fashion_e.BL.DTOs.Product
 {
     public class ProductDto
     {
-        public Guid Id { get; set; }                                // id
 
         [StringLength(20)]
         public string? Code { get; set; }                           // mã

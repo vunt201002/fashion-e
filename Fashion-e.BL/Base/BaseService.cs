@@ -34,6 +34,8 @@ namespace Fashion_e.BL.Base
         {
             T entity = _mapper.Map<T>( item );
 
+            typeof(T).GetProperty("Id").SetValue(entity, Guid.NewGuid());
+
             int res = await _baseRepository.Add(entity);
 
             return res;

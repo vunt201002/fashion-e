@@ -4,6 +4,7 @@ using Fashion_e.DL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fashion_e.DL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231227040707_CustomerShipperEmployee")]
+    partial class CustomerShipperEmployee
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -124,10 +127,6 @@ namespace Fashion_e.DL.Migrations
                     b.Property<int>("IsDelete")
                         .HasColumnType("int");
 
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Phone")
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
@@ -144,6 +143,7 @@ namespace Fashion_e.DL.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
+                        .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
@@ -159,6 +159,7 @@ namespace Fashion_e.DL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
@@ -166,14 +167,12 @@ namespace Fashion_e.DL.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Phone")
+                        .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
@@ -283,6 +282,7 @@ namespace Fashion_e.DL.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("CompanyName")
+                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
@@ -294,6 +294,7 @@ namespace Fashion_e.DL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IdNumber")
+                        .IsRequired()
                         .HasMaxLength(12)
                         .HasColumnType("nvarchar(12)");
 
@@ -301,10 +302,12 @@ namespace Fashion_e.DL.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Phone")
+                        .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
