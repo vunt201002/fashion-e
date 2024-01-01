@@ -4,6 +4,7 @@ using Fashion_e.DL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fashion_e.DL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231230034531_Order")]
+    partial class Order
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,7 +57,7 @@ namespace Fashion_e.DL.Migrations
 
                     b.HasIndex("ParentId");
 
-                    b.ToTable("Category", (string)null);
+                    b.ToTable("Category");
                 });
 
             modelBuilder.Entity("Fashion_e.Common.Entities.Entities.ColorProduct", b =>
@@ -93,7 +96,7 @@ namespace Fashion_e.DL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ColorProduct", (string)null);
+                    b.ToTable("ColorProduct");
                 });
 
             modelBuilder.Entity("Fashion_e.Common.Entities.Entities.Customer", b =>
@@ -134,7 +137,7 @@ namespace Fashion_e.DL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customer", (string)null);
+                    b.ToTable("Customer");
                 });
 
             modelBuilder.Entity("Fashion_e.Common.Entities.Entities.Employee", b =>
@@ -179,7 +182,7 @@ namespace Fashion_e.DL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Employee", (string)null);
+                    b.ToTable("Employee");
                 });
 
             modelBuilder.Entity("Fashion_e.Common.Entities.Entities.Gallery", b =>
@@ -222,7 +225,7 @@ namespace Fashion_e.DL.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Gellery", (string)null);
+                    b.ToTable("Gellery");
                 });
 
             modelBuilder.Entity("Fashion_e.Common.Entities.Entities.Order", b =>
@@ -299,7 +302,7 @@ namespace Fashion_e.DL.Migrations
 
                     b.HasIndex("ShipId");
 
-                    b.ToTable("Order", (string)null);
+                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("Fashion_e.Common.Entities.Entities.Product", b =>
@@ -346,7 +349,7 @@ namespace Fashion_e.DL.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Product", (string)null);
+                    b.ToTable("Product");
                 });
 
             modelBuilder.Entity("Fashion_e.Common.Entities.Entities.Shipper", b =>
@@ -387,7 +390,7 @@ namespace Fashion_e.DL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Shipper", (string)null);
+                    b.ToTable("Shipper");
                 });
 
             modelBuilder.Entity("Fashion_e.Common.Entities.Entities.SizeColorProduct", b =>
@@ -433,7 +436,7 @@ namespace Fashion_e.DL.Migrations
 
                     b.HasIndex("SizeProductId");
 
-                    b.ToTable("SizeColorProduct", (string)null);
+                    b.ToTable("SizeColorProduct");
                 });
 
             modelBuilder.Entity("Fashion_e.Common.Entities.Entities.SizeProduct", b =>
@@ -466,7 +469,7 @@ namespace Fashion_e.DL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SizeProduct", (string)null);
+                    b.ToTable("SizeProduct");
                 });
 
             modelBuilder.Entity("Fashion_e.Common.Entities.Entities.Category", b =>

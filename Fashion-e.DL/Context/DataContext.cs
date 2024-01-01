@@ -30,6 +30,7 @@ namespace Fashion_e.DL.Context
             modelBuilder.ApplyConfiguration(new CustomerConfig());
             modelBuilder.ApplyConfiguration(new ShipperConfig());
             modelBuilder.ApplyConfiguration(new EmployeeConfig());
+            modelBuilder.ApplyConfiguration(new OrderConfig());
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
@@ -43,5 +44,6 @@ namespace Fashion_e.DL.Context
         public DbSet<Customer> Customer { get; set; }
         public DbSet<Shipper> Shipper { get; set; }
         public DbSet<Employee> Employee { get; set; }
+        public DbSet<Order> Order { get; set; }
     }
 }

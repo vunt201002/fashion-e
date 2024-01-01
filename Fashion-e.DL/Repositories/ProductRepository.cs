@@ -38,9 +38,14 @@ namespace Fashion_e.DL.Repositories
                             UnitPrice = product.UnitPrice,
                             Description = product.Description,
                             Material = product.Material,
-                            Instruction = product.Instruction
+                            Instruction = product.Instruction,
+                            Code = product.Code
                         },
-                        Images = galleries.Select(g => g.Link).ToList(),
+                        Images = galleries.Select(g => new
+                        {
+                            g.Link,
+                            g.IsThumbnail
+                        }).ToList(),
                     }
                 )
                 .AsEnumerable()

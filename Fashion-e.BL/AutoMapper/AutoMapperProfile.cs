@@ -10,6 +10,8 @@ using Fashion_e.BL.DTOs.Customer;
 using Fashion_e.BL.DTOs.Employee;
 using Fashion_e.BL.DTOs.Feedback;
 using Fashion_e.BL.DTOs.Gallery;
+using Fashion_e.BL.DTOs.Order;
+using Fashion_e.BL.DTOs.OrderDetail;
 using Fashion_e.BL.DTOs.Product;
 using Fashion_e.BL.DTOs.Shipper;
 using Fashion_e.BL.DTOs.SizeColorProduct;
@@ -36,6 +38,8 @@ namespace Fashion_e.BL.AutoMapper
             CreateMap<CustomerDTO, Customer>();
             CreateMap<EmployeeDTO, Employee>();
             CreateMap<ShipperDTO, Shipper>();
+            CreateMap<OrderDTO, Order>();
+            CreateMap<OrderDetailDTO, OrderDetail>();
         }
     }
 }

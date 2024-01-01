@@ -6,6 +6,8 @@ using Fashion_e.BL.Services.CustomerService;
 using Fashion_e.BL.Services.EmployeeService;
 using Fashion_e.BL.Services.FeedbackService;
 using Fashion_e.BL.Services.GalleryService;
+using Fashion_e.BL.Services.OrderDetailService;
+using Fashion_e.BL.Services.OrderService;
 using Fashion_e.BL.Services.PhotoService;
 using Fashion_e.BL.Services.ProductService;
 using Fashion_e.BL.Services.ShipperService;
@@ -122,6 +124,14 @@ builder.Services.AddScoped<IEmployeeRepository,  EmployeeRepository>();
 // shipper
 builder.Services.AddScoped<IShipperService,  ShipperService>();
 builder.Services.AddScoped<IShipperRepository,  ShipperRepository>();
+
+// order
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+
+// order detail
+builder.Services.AddScoped<IOrderDetailService,  OrderDetailService>();
+builder.Services.AddScoped<IOrderDetailRepository,  OrderDetailRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
