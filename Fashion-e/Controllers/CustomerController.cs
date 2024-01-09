@@ -24,10 +24,12 @@ namespace Fashion_e.Controllers
             return Ok(res);
         }
 
-        [HttpPost("test"), Authorize]
-        public IActionResult Test()
+        [HttpPost("received/{orderId}")]
+        public async Task<IActionResult> Received(Guid orderId)
         {
-            return Ok("test ok");
+            int res = await _customerService.Received(orderId);
+
+            return Ok(res);
         }
     }
 }

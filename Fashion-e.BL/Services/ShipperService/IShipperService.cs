@@ -11,5 +11,12 @@ namespace Fashion_e.BL.Services.ShipperService
 {
     public interface IShipperService : IBaseService<Shipper, ShipperDTO>
     {
+        /// <summary>
+        /// hàm đã giao
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
+        public Task<int> Shipped(Guid orderId);
     }
 }

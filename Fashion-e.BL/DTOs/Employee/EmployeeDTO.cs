@@ -8,6 +8,7 @@ namespace Fashion_e.BL.DTOs.Employee
 {
     public class EmployeeDTO
     {
+        public Guid Id { get; set; }
         public string Email { get; set; }           // email
         public string Password { get; set; }        // mật khẩu
     }

@@ -4,6 +4,7 @@ using Fashion_e.DL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fashion_e.DL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240101113606_UpdateOrderAndNewOrderDetail")]
+    partial class UpdateOrderAndNewOrderDetail
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -240,9 +243,6 @@ namespace Fashion_e.DL.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<Guid>("ConfirmId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
@@ -253,7 +253,7 @@ namespace Fashion_e.DL.Migrations
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("DeliverdId")
+                    b.Property<Guid>("EmployeeId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Freight")
@@ -274,9 +274,6 @@ namespace Fashion_e.DL.Migrations
 
                     b.Property<DateTime>("OrderAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<Guid>("PackagedId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Paid")
                         .HasColumnType("int");
@@ -302,13 +299,9 @@ namespace Fashion_e.DL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ConfirmId");
-
                     b.HasIndex("CustomerId");
 
-                    b.HasIndex("DeliverdId");
-
-                    b.HasIndex("PackagedId");
+                    b.HasIndex("EmployeeId");
 
                     b.HasIndex("ShipId");
 
@@ -548,12 +541,6 @@ namespace Fashion_e.DL.Migrations
 
             modelBuilder.Entity("Fashion_e.Common.Entities.Entities.Order", b =>
                 {
-                    b.HasOne("Fashion_e.Common.Entities.Entities.Employee", null)
-                        .WithMany()
-                        .HasForeignKey("ConfirmId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
                     b.HasOne("Fashion_e.Common.Entities.Entities.Customer", null)
                         .WithMany()
                         .HasForeignKey("CustomerId")
@@ -562,14 +549,8 @@ namespace Fashion_e.DL.Migrations
 
                     b.HasOne("Fashion_e.Common.Entities.Entities.Employee", null)
                         .WithMany()
-                        .HasForeignKey("DeliverdId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("Fashion_e.Common.Entities.Entities.Employee", null)
-                        .WithMany()
-                        .HasForeignKey("PackagedId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Fashion_e.Common.Entities.Entities.Shipper", null)

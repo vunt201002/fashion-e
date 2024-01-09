@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Fashion_e.BL.Base;
 using Fashion_e.BL.DTOs.Customer;
+using Fashion_e.BL.Services.OrderService;
 using Fashion_e.Common.Entities.Entities;
 using Fashion_e.DL.Constracts;
 using Microsoft.IdentityModel.Tokens;
@@ -18,14 +19,17 @@ namespace Fashion_e.BL.Services.CustomerService
     {
         private readonly ICustomerRepository _customerRepository;
         private readonly IMapper _mapper;
+        private readonly IOrderService _orderService;
 
         public CustomerService(
             ICustomerRepository customerRepository,
-            IMapper mapper
+            IMapper mapper,
+            IOrderService orderService
         ) : base(customerRepository, mapper)
         {
             _customerRepository = customerRepository;
             _mapper = mapper;
+            _orderService = orderService;
         }
 
         /// <summary>
@@ -63,6 +67,13 @@ namespace Fashion_e.BL.Services.CustomerService
             string token = CreateToken(customer);
 
             return token;
+        }
+
+        public async Task<int> Received(Guid orderId)
+        {
+            int res = await _orderService.Received(orderId);
+
+            return res;
         }
 
         private string CreateToken(Customer customer)

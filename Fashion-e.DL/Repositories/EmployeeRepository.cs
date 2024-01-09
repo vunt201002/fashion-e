@@ -14,10 +14,14 @@ namespace Fashion_e.DL.Repositories
     public class EmployeeRepository : BaseRepository<Employee>, IEmployeeRepository
     {
         private readonly DataContext _context;
+        private readonly IOrderRepository _orderRepository;
 
-        public EmployeeRepository(DataContext context) : base(context)
+        public EmployeeRepository(
+            DataContext context
+            , IOrderRepository orderRepository) : base(context)
         {
             _context = context;
+            _orderRepository = orderRepository;
         }
 
         public async Task<Employee?> GetEmployeeByEmail(string email)

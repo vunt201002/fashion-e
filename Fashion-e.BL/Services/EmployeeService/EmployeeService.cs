@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Fashion_e.BL.Base;
 using Fashion_e.BL.DTOs.Employee;
+using Fashion_e.BL.Services.OrderService;
 using Fashion_e.Common.Entities.Entities;
 using Fashion_e.DL.Constracts;
 using Fashion_e.DL.Repositories;
@@ -19,14 +20,17 @@ namespace Fashion_e.BL.Services.EmployeeService
     {
         private readonly IEmployeeRepository _employeeRepository;
         private readonly IMapper _mapper;
+        private readonly IOrderService _orderService;
 
         public EmployeeService(
             IEmployeeRepository employeeRepository,
-            IMapper mapper
+            IMapper mapper,
+            IOrderService orderService
         ) : base( employeeRepository, mapper )
         {
             _employeeRepository = employeeRepository;
             _mapper = mapper;
+            _orderService = orderService;
         }
 
         public override async Task<int> Add(EmployeeDTO item)
@@ -37,6 +41,20 @@ namespace Fashion_e.BL.Services.EmployeeService
             employee.PasswordHash = passwordHash;
 
             int res = await _employeeRepository.Add(employee);
+
+            return res;
+        }
+
+        public async Task<int> ConfirmOrder(Guid orderId, Guid employeeId)
+        {
+            int res = await _orderService.ConfirmOrder(orderId, employeeId);
+
+            return res;
+        }
+
+        public async Task<int> DeliverdOrder(Guid orderId, Guid employeeId, Guid shipId)
+        {
+            int res = await _orderService.DeliverdOrder(orderId, employeeId, shipId);
 
             return res;
         }
@@ -58,6 +76,13 @@ namespace Fashion_e.BL.Services.EmployeeService
             string token = CreateToken(employee.Id);
 
             return token;
+        }
+
+        public async Task<int> PackageOrder(Guid orderId, Guid employeeId)
+        {
+            int res = await _orderService.PackageOrder(orderId, employeeId);
+
+            return res;
         }
 
         private string CreateToken(Guid Id)

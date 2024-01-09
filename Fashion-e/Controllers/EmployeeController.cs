@@ -25,10 +25,28 @@ namespace Fashion_e.Controllers
             return Ok(res);
         }
 
-        [HttpPost("test"), Authorize]
-        public IActionResult Test()
+        [HttpPost("confirm/{orderId}")]
+        public async Task<IActionResult> ConfirmOrder(Guid orderId, Guid employeeId)
         {
-            return Ok("test ok");
+            int res = await _employeeService.ConfirmOrder(orderId, employeeId);
+
+            return Ok(res);
+        }
+
+        [HttpPost("packaged/{orderId}")]
+        public async Task<IActionResult> PackageOrder(Guid orderId, Guid employeeId)
+        {
+            int res = await _employeeService.PackageOrder(orderId, employeeId);
+
+            return Ok(res);
+        }
+
+        [HttpPost("deliverd/{orderId}")]
+        public async Task<IActionResult> DeliverdOrder(Guid orderId, Guid employeeId, Guid shipId)
+        {
+            int res = await _employeeService.DeliverdOrder(orderId, employeeId, shipId);
+
+            return Ok(res);
         }
     }
 }

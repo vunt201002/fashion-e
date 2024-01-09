@@ -31,9 +31,18 @@ namespace Fashion_e.Common.Entities.Configuration
 
             builder.HasOne<Employee>()
                 .WithMany()
-                .HasForeignKey(x =>x.EmployeeId);
+                .HasForeignKey(x =>x.ConfirmId)
+                .OnDelete(DeleteBehavior.NoAction);
 
-            
+            builder.HasOne<Employee>()
+                .WithMany()
+                .HasForeignKey(x => x.PackagedId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder.HasOne<Employee>()
+                .WithMany()
+                .HasForeignKey(x => x.DeliverdId)
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

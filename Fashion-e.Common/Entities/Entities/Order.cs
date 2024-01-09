@@ -10,7 +10,9 @@ namespace Fashion_e.Common.Entities.Entities
     public class Order : BaseEntity
     {
         public Guid CustomerId { get; set; }                                        // id khách hàng
-        public Guid EmployeeId { get; set; } = default;                             // id nhân viên
+        public Guid ConfirmId { get; set; }                                         // id nhân viên xác nhận
+        public Guid PackagedId { get; set; }                                        // id nhân viên đóng gói
+        public Guid DeliverdId { get; set; }                                        // id nhân viên giao cho shipper
         public string Name { get; set; }                                            // tên người nhận
         public string Phone { get; set; }                                           // số điện thoại người nhận
         public string Address { get; set; }                                         // địa chỉ
@@ -21,5 +23,6 @@ namespace Fashion_e.Common.Entities.Entities
         public DateTime ShippedDate { get; set; } = DateTime.Now.AddDays(5);        // ngày giao thực tế
         public Guid ShipId { get; set; } = default;                                 // id shipper
         public string Status { get; set; } = "Chờ xác nhận";                        // trạng thái đơn hàng
+        public int Paid { get; set; } = 0;                                          // đã thanh toán chưa
     }
 }

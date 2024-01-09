@@ -11,5 +11,6 @@ namespace Fashion_e.BL.Services.OrderDetailService
 {
     public interface IOrderDetailService : IBaseService<OrderDetail, OrderDetailDTO>
     {
+        
     }
 }
